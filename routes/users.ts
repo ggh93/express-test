@@ -6,7 +6,7 @@ class CustomError extends Error {
   // statusCode: number;
 }
 
-const db = require("../mysql-db");
+const db = require("../modules/mysql-db");
 const router = express.Router();
 
 /* GET users listing. */

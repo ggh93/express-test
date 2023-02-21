@@ -1,8 +1,5 @@
 import express, { Request, Response, NextFunction } from "express";
 
-// const cookieParser = require("cookie-parser");
-// app.use(cookieParser());
-
 const createError = require("http-errors");
 const logger = require("morgan");
 const path = require("path");
@@ -13,8 +10,6 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 const step1 = require("./routes/step1");
 const step2 = require("./routes/step2");
-const mysqlDB = require("./mysql-db");
-mysqlDB.connect();
 
 const app = express();
 
@@ -43,16 +38,5 @@ app.use(function (req: Request, res: Response, next: NextFunction) {
   next(createError(404)); // 개발서버 테스트용
   // res.status(200).json({ susccess: false, message: "not found", code: 1000 });
 });
-
-// error handler
-// app.use(function (err, req, res, next) {
-//   // set locals, only providing error in development
-//   res.locals.message = err.message;
-//   res.locals.error = req.app.get("env") === "development" ? err : {};
-
-//   // render the error page
-//   res.status(err.status || 500);
-//   res.render("error");
-// });
 
 module.exports = app;
